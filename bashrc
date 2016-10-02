@@ -19,15 +19,15 @@ parse_git_status() {
   if [ $r1 -eq 1 ] ;
     then
       if [ $r2 -eq 1 ] ;
-        then echo "+*";
-      else echo "+";
+        then echo " +*";
+      else echo " +";
       fi;
-  else if [ $r2 -eq 1 ] ; then echo "*"; fi;
+  else if [ $r2 -eq 1 ] ; then echo " *"; fi;
   fi;
 }
 display_git() {
   if git rev-parse --git-dir > /dev/null 2>&1; then
-    echo " [$(parse_git_branch) $(parse_git_status)] ";
+    echo " [$(parse_git_branch)$(parse_git_status)] ";
   fi
 }
 export PS1="$txtblu\u$txtwht $txtred\W\[\033[32m\]$txtcyn\$(display_git)\[\033[00m\] $ "
